@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智慧社区居家安全与能耗协同管理系统</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">IoT / Edge / Cloud / OA Workflow</div>
+      <h1>智慧社区居家安全与能耗协同管理系统</h1>
+      <p class="subtitle">
+        面向老旧社区的燃气、烟雾、用电、漏水与老人户异常活动，形成像 OA 一样可流转、可派单、可闭环的动态管理平台。
+      </p>
+      <div class="hero-pills">
+        <span>实时仿真</span>
+        <span>工单流转</span>
+        <span>多页面切换</span>
+        <span>前后端分离</span>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <div class="status-chip">
+        <span class="dot"></span>
+        <span id="simStatusText">实时运行</span>
+      </div>
+      <div class="hero-meta" id="simTime">--</div>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-control="toggle">暂停 / 继续</button>
+        <button class="btn btn-soft" data-control="tick">手动步进</button>
+        <button class="btn btn-soft" data-action="export">导出快照</button>
+      </div>
+    </aside>
+  </header>
+
+  <nav class="page-nav" id="pageNav">
+    <button class="tab active" data-view="overview">总览</button>
+    <button class="tab" data-view="workflow">工单</button>
+    <button class="tab" data-view="alerts">告警</button>
+    <button class="tab" data-view="devices">设备</button>
+    <button class="tab" data-view="settings">设置</button>
+  </nav>
+
+  <main class="shell">
+    <section class="view active" data-view="overview">
+      <section class="kpi-grid" id="kpiGrid"></section>
+
+      <section class="grid-2">
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <h2>风险与能耗趋势</h2>
+            <span class="panel-note" id="workflowSummary"></span>
+          </div>
+          <svg id="trendChart" viewBox="0 0 900 260" preserveAspectRatio="none"></svg>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>楼栋画像</h2>
+            <span class="panel-note">点击可钻取</span>
+          </div>
+          <div id="buildingCards" class="card-stack"></div>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>最近通知</h2>
+            <span class="panel-note">物业消息流</span>
+          </div>
+          <div id="notificationFeed" class="feed"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>快捷入口</h2>
+            <span class="panel-note">常用操作</span>
+          </div>
+          <div class="quick-grid">
+            <button class="quick-card" data-go="workflow">查看工单</button>
+            <button class="quick-card" data-go="alerts">查看告警</button>
+            <button class="quick-card" data-go="devices">查看设备</button>
+            <button class="quick-card" data-go="settings">系统设置</button>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section class="view" data-view="workflow">
+      <div class="toolbar panel">
+        <div class="toolbar-grid">
+          <label>
+            关键词
+            <input id="orderSearch" type="search" placeholder="搜索住户、标题、类型" />
+          </label>
+          <label>
+            楼栋
+            <select id="buildingFilter"></select>
+          </label>
+          <label>
+            状态
+            <select id="statusFilter"></select>
+          </label>
+          <label>
+            自动刷新
+            <select id="autoRefreshSelect">
+              <option value="on">开启</option>
+              <option value="off">关闭</option>
+            </select>
+          </label>
+        </div>
+        <div class="toolbar-actions">
+          <button class="btn btn-soft" data-control="tick">手动步进</button>
+          <button class="btn btn-soft" data-action="export">导出快照</button>
+        </div>
+      </div>
+
+      <section class="workflow-layout">
+        <div class="kanban-scroll" id="workflowBoard"></div>
+        <aside class="detail-panel panel" id="orderDetail"></aside>
+      </section>
+    </section>
+
+    <section class="view" data-view="alerts">
+      <section class="grid-2">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>告警分布</h2>
+            <span class="panel-note">按类型统计</span>
+          </div>
+          <div id="alertStats" class="card-stack"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <h2>通知中心</h2>
+            <span class="panel-note">OA 风格提醒</span>
+          </div>
+          <div id="alertNotificationFeed" class="feed"></div>
+        </article>
+      </section>
+      <section class="panel">
+        <div class="panel-head">
+          <h2>告警列表</h2>
+          <span class="panel-note">点击可联动工单</span>
+        </div>
+        <div id="alertFeed" class="feed"></div>
+      </section>
+    </section>
+
+    <section class="view" data-view="devices">
+      <div class="toolbar panel">
+        <div class="toolbar-grid">
+          <label>
+            搜索设备
+            <input id="deviceSearch" type="search" placeholder="搜索住户编号或楼栋" />
+          </label>
+          <label>
+            风险分区
+            <select id="riskFilter">
+              <option value="all">全部</option>
+              <option value="high">高风险</option>
+              <option value="medium">中风险</option>
+              <option value="low">低风险</option>
+            </select>
+          </label>
+          <label>
+            排序
+            <select id="deviceSort">
+              <option value="risk">风险优先</option>
+              <option value="energy">能耗优先</option>
+              <option value="alphabet">字母顺序</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <section id="unitGrid" class="unit-grid"></section>
+    </section>
+
+    <section class="view" data-view="settings">
+      <section class="grid-2">
+        <article class="panel">
+          <div class="panel-head">
+            <h2>模拟控制</h2>
+            <span class="panel-note">用于演示动态感</span>
+          </div>
+          <div class="settings-actions">
+            <button class="btn btn-primary" data-control="toggle">暂停 / 继续</button>
+            <button class="btn btn-soft" data-control="tick">手动步进</button>
+            <button class="btn btn-soft" data-action="export">导出快照</button>
+          </div>
+          <div class="setting-list" id="settingSummary"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <h2>API 说明</h2>
+            <span class="panel-note">前后端分离</span>
+          </div>
+          <div class="api-list">
+            <code>GET /api/snapshot</code>
+            <code>GET /api/health</code>
+            <code>POST /api/sim/control</code>
+            <code>POST /api/work-orders/action</code>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

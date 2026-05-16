@@ -7,11 +7,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from smartcity_iot.server import run_server  # noqa: E402
+from smartcity_iot.server_oa import run_server  # noqa: E402
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the smart community IoT dashboard.")
+    parser = argparse.ArgumentParser(description="Run the improved smart community OA dashboard.")
     parser.add_argument("--port", type=int, default=8080)
     parser.add_argument("--households", type=int, default=24)
     parser.add_argument("--seed", type=int, default=42)
