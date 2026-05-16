@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>注册 | 智慧社区居家安全与能耗协同管理系统</title>
+  <link rel="stylesheet" href="/auth.css" />
+</head>
+<body data-page="register">
+  <div class="auth-shell">
+    <section class="brand-panel">
+      <div class="brand-badge">Community / Security / Energy</div>
+      <h1>创建新的系统账号</h1>
+      <p>
+        注册后即可进入社区安全与能耗协同平台，体验告警联动、工单流转、设备画像与创新模块。
+      </p>
+      <div class="brand-points">
+        <div>支持用户名 + 邮箱注册</div>
+        <div>课堂演示可多人分角色登录</div>
+        <div>适配云边端一体化展示</div>
+      </div>
+      <div class="demo-card demo-card-soft">
+        <strong>注册规范</strong>
+        <span>用户名 3-24 位</span>
+        <span>密码至少 8 位</span>
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-topbar">
+        <span class="mini-brand">社区安全 OA</span>
+        <span class="switch-link">已有账号？<a href="/login.html">返回登录</a></span>
+      </div>
+
+      <div class="form-card">
+        <div class="form-header">
+          <h2>账号注册</h2>
+          <p>注册成功后将跳转至登录页。</p>
+        </div>
+
+        <div id="authMessage" class="auth-message"></div>
+
+        <form id="registerForm" class="auth-form">
+          <label>
+            <span>用户名</span>
+            <input id="registerUsername" name="username" type="text" autocomplete="username" placeholder="请输入用户名" required />
+          </label>
+
+          <label>
+            <span>邮箱</span>
+            <input id="registerEmail" name="email" type="email" autocomplete="email" placeholder="请输入邮箱" required />
+          </label>
+
+          <label>
+            <span>密码</span>
+            <input id="registerPassword" name="password" type="password" autocomplete="new-password" placeholder="请输入密码" required />
+          </label>
+
+          <label>
+            <span>确认密码</span>
+            <input id="registerConfirmPassword" name="confirm_password" type="password" autocomplete="new-password" placeholder="请再次输入密码" required />
+          </label>
+
+          <button class="auth-btn" type="submit">注册账号</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="/auth.js"></script>
+</body>
+</html>

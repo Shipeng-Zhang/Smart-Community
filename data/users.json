@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "username": "admin",
+    "email": "admin@community.local",
+    "password_hash": "pbkdf2_sha256$iZ8Ko0eBhfBn9wcqAJ5ugw==$AhevEZyQmZBuXAAxYeMO4clZILhDmx2G/QR8tqB50i4=",
+    "created_at": "2026-05-16T08:57:26Z"
+  },
+  "student01": {
+    "username": "student01",
+    "email": "student01@example.com",
+    "password_hash": "pbkdf2_sha256$9PnB20HFrgzZPQEmwNQlcw==$ej/Gesawtwn33Yoi71l2JqnzXolnBFatshORKaoo6aY=",
+    "created_at": "2026-05-16T10:46:42Z"
+  }
+}

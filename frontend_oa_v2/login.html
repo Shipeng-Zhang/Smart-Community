@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登录 | 智慧社区居家安全与能耗协同管理系统</title>
+  <link rel="stylesheet" href="/auth.css" />
+</head>
+<body data-page="login">
+  <div class="auth-shell">
+    <section class="brand-panel">
+      <div class="brand-badge">IoT / Edge / Cloud</div>
+      <h1>智慧社区居家安全与能耗协同管理系统</h1>
+      <p>
+        以老旧社区居家安全和能耗治理为核心，融合前端驾驶舱、边缘规则引擎、云端工单闭环与用户认证体系。
+      </p>
+      <div class="brand-points">
+        <div>登录注册入口</div>
+        <div>动态仿真数据</div>
+        <div>适合演示部署</div>
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <div class="form-topbar">
+        <span class="mini-brand">社区安全 OA</span>
+        <span class="switch-link">还没有账号？<a href="/register.html">立即注册</a></span>
+      </div>
+
+      <div class="form-card">
+        <div class="form-header">
+          <h2>账号登录</h2>
+          <p>登录后进入云边端协同智慧社区大屏。</p>
+        </div>
+
+        <div id="authMessage" class="auth-message"></div>
+
+        <form id="loginForm" class="auth-form">
+          <label>
+            <span>用户名或邮箱</span>
+            <input id="loginAccount" name="account" type="text" autocomplete="username" placeholder="请输入用户名或邮箱" required />
+          </label>
+
+          <label>
+            <span>密码</span>
+            <input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="请输入密码" required />
+          </label>
+
+          <button class="auth-btn" type="submit">登录系统</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="/auth.js"></script>
+</body>
+</html>
