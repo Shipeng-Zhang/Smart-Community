@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智慧社区居家安全与能耗管理系统</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <div>
+      <div class="badge">IoT / Edge / Cloud / Workflow</div>
+      <h1>智慧社区居家安全与能耗管理系统</h1>
+      <p class="subtitle">
+        面向老旧社区的厨房燃气、烟雾、用电、渗漏和空气质量问题，构建像 OA 一样可流转、可派单、可闭环的物联网驾驶舱。
+      </p>
+    </div>
+    <div class="toolbar">
+      <div class="status-pill" id="simStatus">
+        <span class="dot"></span>
+        <span>实时运行</span>
+      </div>
+      <div class="tool-actions">
+        <button id="toggleBtn" class="btn btn-soft">暂停</button>
+        <button id="stepBtn" class="btn btn-soft">手动步进</button>
+        <button id="refreshBtn" class="btn btn-primary">立即刷新</button>
+      </div>
+      <div class="meta" id="simTime">--</div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="kpi-grid" id="kpiGrid"></section>
+
+    <section class="board">
+      <article class="panel chart-panel">
+        <div class="panel-head">
+          <h2>风险与能耗趋势</h2>
+          <span id="workflowCounts"></span>
+        </div>
+        <svg id="trendChart" viewBox="0 0 900 260" preserveAspectRatio="none"></svg>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>社区楼栋画像</h2>
+          <span>动态聚合</span>
+        </div>
+        <div id="buildingCards" class="card-list"></div>
+      </article>
+    </section>
+
+    <section class="workflow-row">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>工单流转</h2>
+          <span>待办 / 派单 / 处理中 / 已闭环</span>
+        </div>
+        <div id="workflowBoard" class="workflow-board"></div>
+      </article>
+    </section>
+
+    <section class="dual-row">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>最新告警</h2>
+          <span>边缘侧自动生成</span>
+        </div>
+        <div id="alertFeed" class="feed"></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>通知中心</h2>
+          <span>OA 风格消息流</span>
+        </div>
+        <div id="notificationFeed" class="feed"></div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>设备实时态势</h2>
+        <span>按风险排序</span>
+      </div>
+      <div id="unitGrid" class="unit-grid"></div>
+    </section>
+  </main>
+
+  <template id="orderCardTemplate">
+    <article class="order-card">
+      <div class="order-head">
+        <div>
+          <strong class="order-title"></strong>
+          <div class="order-meta"></div>
+        </div>
+        <span class="priority-tag"></span>
+      </div>
+      <p class="order-desc"></p>
+      <div class="order-footer">
+        <span class="order-status"></span>
+        <div class="order-actions"></div>
+      </div>
+    </article>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>

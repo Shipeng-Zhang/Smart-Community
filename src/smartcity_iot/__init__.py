@@ -1,0 +1,2 @@
+"""Smart community IoT system."""
+
