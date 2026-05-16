@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360" role="img" aria-labelledby="title desc">
+  <title id="title">智慧社区工单闭环流程图</title>
+  <desc id="desc">展示从边缘告警到工单派单、处理、完成、关闭以及重新打开的闭环流程。</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .step { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 8; }
+      .step-alert { fill: #fff7ed; stroke: #c2410c; }
+      .step-active { fill: #eef8f6; stroke: #0f766e; }
+      .step-done { fill: #f0fdf4; stroke: #15803d; }
+      .title { font: 700 18px "Microsoft YaHei", "PingFang SC", sans-serif; fill: #0f172a; }
+      .note { font: 13px "Microsoft YaHei", "PingFang SC", sans-serif; fill: #475569; }
+      .arrow { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .loop { stroke: #b45309; stroke-width: 2; fill: none; stroke-dasharray: 7 6; marker-end: url(#arrow-warn); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-warn" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#b45309"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1120" height="360"/>
+  <rect class="step step-alert" x="36" y="124" width="148" height="92"/>
+  <text class="title" x="66" y="160">边缘告警</text>
+  <text class="note" x="62" y="188">燃气、烟雾、</text>
+  <text class="note" x="62" y="207">漏水、老人关怀</text>
+
+  <rect class="step" x="234" y="124" width="148" height="92"/>
+  <text class="title" x="279" y="160">待派单</text>
+  <text class="note" x="272" y="188">new</text>
+  <text class="note" x="260" y="207">自动建单</text>
+
+  <rect class="step step-active" x="432" y="124" width="148" height="92"/>
+  <text class="title" x="477" y="160">已派单</text>
+  <text class="note" x="470" y="188">assigned</text>
+  <text class="note" x="462" y="207">分配处理组</text>
+
+  <rect class="step step-active" x="630" y="124" width="148" height="92"/>
+  <text class="title" x="675" y="160">处理中</text>
+  <text class="note" x="670" y="188">processing</text>
+  <text class="note" x="660" y="207">现场处置</text>
+
+  <rect class="step step-done" x="828" y="124" width="112" height="92"/>
+  <text class="title" x="861" y="160">待闭环</text>
+  <text class="note" x="859" y="188">resolved</text>
+  <text class="note" x="850" y="207">指标复核</text>
+
+  <rect class="step step-done" x="990" y="124" width="94" height="92"/>
+  <text class="title" x="1012" y="160">关闭</text>
+  <text class="note" x="1016" y="188">closed</text>
+  <text class="note" x="1005" y="207">流程归档</text>
+
+  <path class="arrow" d="M184 170 L234 170"/>
+  <path class="arrow" d="M382 170 L432 170"/>
+  <path class="arrow" d="M580 170 L630 170"/>
+  <path class="arrow" d="M778 170 L828 170"/>
+  <path class="arrow" d="M940 170 L990 170"/>
+
+  <text class="note" x="199" y="154">create</text>
+  <text class="note" x="397" y="154">assign</text>
+  <text class="note" x="594" y="154">start</text>
+  <text class="note" x="792" y="154">resolve</text>
+  <text class="note" x="952" y="154">close</text>
+
+  <path class="loop" d="M308 124 C308 68 704 68 704 124"/>
+  <text class="note" x="468" y="62">SLA 超时自动升级</text>
+
+  <path class="loop" d="M1037 216 C1037 298 704 302 704 216"/>
+  <text class="note" x="816" y="304">异常复发可重新打开</text>
+</svg>

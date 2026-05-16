@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">智慧社区云边端系统总体架构图</title>
+  <desc id="desc">展示端侧传感器、边缘规则引擎、云端平台和前端 OA 系统之间的数据流。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .lane { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
+      .lane-title { font: 700 22px "Microsoft YaHei", "PingFang SC", sans-serif; fill: #0f172a; }
+      .box { fill: #fefcf8; stroke: #94a3b8; stroke-width: 1.4; rx: 8; }
+      .box-cloud { fill: #eef8f6; stroke: #0f766e; }
+      .box-edge { fill: #fff7ed; stroke: #c2410c; }
+      .box-device { fill: #eff6ff; stroke: #2563eb; }
+      .text { font: 16px "Microsoft YaHei", "PingFang SC", sans-serif; fill: #1f2937; }
+      .small { font: 13px "Microsoft YaHei", "PingFang SC", sans-serif; fill: #475569; }
+      .arrow { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 7 6; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1120" height="560"/>
+  <rect class="lane" x="36" y="54" width="304" height="452" rx="14"/>
+  <rect class="lane" x="408" y="54" width="304" height="452" rx="14"/>
+  <rect class="lane" x="780" y="54" width="304" height="452" rx="14"/>
+  <text class="lane-title" x="70" y="98">端侧感知层</text>
+  <text class="lane-title" x="442" y="98">边缘计算层</text>
+  <text class="lane-title" x="814" y="98">云端应用层</text>
+
+  <rect class="box box-device" x="74" y="132" width="228" height="68"/>
+  <text class="text" x="102" y="162">燃气 / 烟雾 / PM2.5</text>
+  <text class="small" x="102" y="184">厨房与空气安全感知</text>
+
+  <rect class="box box-device" x="74" y="226" width="228" height="68"/>
+  <text class="text" x="102" y="256">功率 / 漏水 / 门磁</text>
+  <text class="small" x="102" y="278">用电、管网与安防状态</text>
+
+  <rect class="box box-device" x="74" y="320" width="228" height="68"/>
+  <text class="text" x="102" y="350">老人户活动检测</text>
+  <text class="small" x="102" y="372">低活动异常与主动关怀</text>
+
+  <rect class="box box-edge" x="446" y="132" width="228" height="68"/>
+  <text class="text" x="478" y="162">动态仿真引擎</text>
+  <text class="small" x="478" y="184">CommunitySimulator</text>
+
+  <rect class="box box-edge" x="446" y="246" width="228" height="68"/>
+  <text class="text" x="478" y="276">风险评分与告警规则</text>
+  <text class="small" x="478" y="298">多源异常识别、冷却机制</text>
+
+  <rect class="box box-edge" x="446" y="360" width="228" height="68"/>
+  <text class="text" x="478" y="390">边缘告警预处理</text>
+  <text class="small" x="478" y="412">自动生成告警上下文</text>
+
+  <rect class="box box-cloud" x="818" y="116" width="228" height="64"/>
+  <text class="text" x="856" y="146">认证服务</text>
+  <text class="small" x="856" y="168">登录、注册、Token 会话</text>
+
+  <rect class="box box-cloud" x="818" y="204" width="228" height="64"/>
+  <text class="text" x="856" y="234">业务中台</text>
+  <text class="small" x="856" y="256">KPI、趋势、楼栋画像</text>
+
+  <rect class="box box-cloud" x="818" y="292" width="228" height="64"/>
+  <text class="text" x="856" y="322">OA 工单闭环</text>
+  <text class="small" x="856" y="344">派单、处理、关闭、升级</text>
+
+  <rect class="box box-cloud" x="818" y="380" width="228" height="64"/>
+  <text class="text" x="856" y="410">前端驾驶舱</text>
+  <text class="small" x="856" y="432">总览、告警、设备、创新</text>
+
+  <path class="arrow" d="M302 166 C360 166 382 166 446 166"/>
+  <path class="arrow" d="M302 260 C360 260 382 242 446 166"/>
+  <path class="arrow" d="M302 354 C360 354 382 393 446 394"/>
+  <path class="arrow" d="M560 200 L560 246"/>
+  <path class="arrow" d="M560 314 L560 360"/>
+  <path class="arrow" d="M674 394 C740 394 766 324 818 324"/>
+  <path class="arrow" d="M674 280 C744 280 760 236 818 236"/>
+  <path class="arrow dash" d="M932 380 L932 356"/>
+  <path class="arrow dash" d="M932 292 L932 268"/>
+  <path class="arrow dash" d="M932 204 L932 180"/>
+  <text class="small" x="384" y="146">实时数据</text>
+  <text class="small" x="694" y="374">告警与工单</text>
+  <text class="small" x="956" y="372">API 鉴权访问</text>
+</svg>
